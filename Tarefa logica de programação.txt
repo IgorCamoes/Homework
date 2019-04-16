@@ -1,0 +1,81 @@
+Adivinhe o número
+
+                constante numero = numeroAleatorio(0, 50);
+                constante tentativas = 5;
+
+saída("Descubra qual o número aleatório entre 0 a 50.");
+
+numeroPalpite = entrada("Informe um número.");
+
+enquanto(tentativas > 0){
+    se (numeroPalpite > numeroAleatorio){
+    tentativas - 1;
+    saída("O número informado é maior que o número aleatório, tente novamente, você tem " + tentativas + " tentativas.");
+    }
+
+    se não se(numeroPalpite < numeroAleatorio){
+        tentativas - 1;
+        saída("O número informado é menor que o número aleatório, tente novamente, você tem " + tentativas + " tentativas.");
+    }
+
+    se não se (numeroPalpite = numeroAleatorio){
+        saída("Parabéns! Você acertou o número, atualize a página se quiser tentar novamente");
+    }
+}
+
+saída("Que pena, o número aleatório foi o " + numeroAleatorio + ". Boa sorte da próxima vez.");
+
+
+================================================================================================================
+
+Chegar na estação hack
+
+    direcaoVirar;
+    saida = H;
+    cartao;
+
+função sairDoTrem
+
+se (sentido do trem que você desceu = vila madalena{
+    direcaoVirar = "direita";
+    alertar("Vire à " + direcaoVirar + " e suba a escada.");
+    direcaoVirar = "esquerda";
+    alertar("Siga em frente, olhe para o lado à sua " + direcaoVirar + " e continue andando em direção à saída " + saida + ")
+    
+} 
+    
+}
+
+================================================================================================================
+
+Par ou ímpar
+
+constante numero;
+constante numeroDividido;
+
+numero = entrada("Digite um número para saber se ele é par ou ímpar:");
+
+numeroDividido = numero;
+
+enquanto(numeroDividido > 1){
+    numeroDividido / 2;
+}
+
+se(numeroDividido = 1){
+    saída("O número " + numero + " é par.");
+}
+
+se não se(numeroDividido < 1){
+    saída("O número " + numero + " é ímpar.");
+}
+
+================================================================================================================
+
+palíndromo
+
+criar palavra;
+criar palavraInvertida;
+
+palavra = entrada("Digite a palavra que deseja saber se é um palíndromo:);
+
+palavraInvertida
