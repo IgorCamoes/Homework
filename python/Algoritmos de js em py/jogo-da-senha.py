@@ -4,7 +4,7 @@ provaRealSenha = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 sequenciaSenha = []
 sequenciaUsuario = []
 respostaVisual = []
-tentativas = 0
+tentativas = 10
 
 while len(sequenciaSenha) < 5:
     a = randint(0,10)
@@ -15,20 +15,18 @@ while len(sequenciaSenha) < 5:
 
 print('Bem vindo ao jogo da senha secreta!')
 
-while tentativas < 10:
-    print(f'Você tem {5 - tentativas} tentativas')
+while tentativas > 0:
+    print(f'Voce tem {tentativas} tentativas')
     
     while len(sequenciaUsuario) < 5:
-        respostaUsuario = input('Digite sua sequencia de 5 dígitos: ')
+        respostaUsuario = input('Digite sua sequencia de 5 digitos: ')
 
-        if respostaUsuario == 'sair' or 'SAIR' or 'Sair':
-            break
 
         for tentativa in respostaUsuario:
             sequenciaUsuario.append(int(tentativa))
 
         if len(sequenciaUsuario) != 5:
-            print('Sequência inválida, ela deve conter 5 dígitos.') 
+            print('Sequencia invalida, ela deve conter 5 digitos.') 
     
     print(sequenciaUsuario)
 
@@ -47,6 +45,8 @@ while tentativas < 10:
     print(sequenciaUsuario)
     print(respostaVisual)
 
+    tentativas-=1
+
     if sequenciaSenha == sequenciaUsuario:
         break
 
@@ -55,5 +55,5 @@ while tentativas < 10:
 
 if sequenciaSenha == sequenciaUsuario:
     print('PARABENS, TU CONSEGUIU!!!')
-elif respostaUsuario == 'sair' or 'SAIR' or 'Sair':
-    print(f'Que pena que desistiu, a resposta era: {sequenciaSenha}')
+elif tentativas == 0:
+    print(f'Que pena que nao conseguiu adivinhar, a senha era {sequenciaSenha}')
