@@ -13,37 +13,47 @@ while len(sequenciaSenha) < 5:
             provaRealSenha.remove(a)
             sequenciaSenha.append(a)
 
-print(sequenciaSenha)
 print('Bem vindo ao jogo da senha secreta!')
 
-while tentativas < 6:
+while tentativas < 10:
     print(f'Você tem {5 - tentativas} tentativas')
-    pos = 1
-    for posicao in sequenciaSenha:
-        sequenciaUsuario.append(int(input(f'Digite o número que vai na posição numero {pos} ')))
-        pos+=1
+    
+    while len(sequenciaUsuario) < 5:
+        respostaUsuario = input('Digite sua sequencia de 5 dígitos: ')
+
+        if respostaUsuario == 'sair' or 'SAIR' or 'Sair':
+            break
+
+        for tentativa in respostaUsuario:
+            sequenciaUsuario.append(int(tentativa))
+
+        if len(sequenciaUsuario) != 5:
+            print('Sequência inválida, ela deve conter 5 dígitos.') 
     
     print(sequenciaUsuario)
 
     for numero in sequenciaUsuario:
-        index = 0
-        if numero in sequenciaSenha and numero == sequenciaSenha[index]:
-            respostaVisual[index] = 'O'
-            print('PRIMEIROIF')
-        elif numero in sequenciaSenha and numero != sequenciaSenha[index]:
-            respostaVisual.append("-")
-            print('SEGUNDOIF')
-        elif numero not in sequenciaSenha:
-            respostaVisual.append("X")
-            print('ULTIMO IF')
-    
 
-    print("Resultado da rodada: ")
+        if numero in sequenciaSenha and sequenciaUsuario.index(numero) == sequenciaSenha.index(numero):
+            respostaVisual.append('O')
+        elif numero in sequenciaSenha and sequenciaUsuario.index(numero) != sequenciaSenha.index(numero):
+            respostaVisual.append('-')
+        elif numero not in sequenciaSenha:
+            respostaVisual.append('X')
+
+
+
+    print('Resultado da primeira rodada: ') 
     print(sequenciaUsuario)
-    print(respostaVisual[0:6])
+    print(respostaVisual)
+
+    if sequenciaSenha == sequenciaUsuario:
+        break
 
     sequenciaUsuario.clear()
     respostaVisual.clear()
 
-    tentativas+=1
-    pos = 0
+if sequenciaSenha == sequenciaUsuario:
+    print('PARABENS, TU CONSEGUIU!!!')
+elif respostaUsuario == 'sair' or 'SAIR' or 'Sair':
+    print(f'Que pena que desistiu, a resposta era: {sequenciaSenha}')
