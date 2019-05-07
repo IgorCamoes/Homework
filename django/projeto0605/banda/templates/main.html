@@ -1,0 +1,29 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script defer src="{% static 'scripts/script.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC|Tulpen+One" rel="stylesheet">
+    <title>Babymetal!</title>
+</head>
+<body>
+    <header></header>
+    
+    <nav>
+        <div><a href="">About</a></div>
+        <div><a href="">Tour</a></div>
+        <div><a href="">Fan Club</a></div>
+    </nav>
+    
+    {% block content %}
+    {% endblock %}
+    
+    <footer></footer>
+</body>
+</html>
