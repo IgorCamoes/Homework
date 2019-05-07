@@ -4,7 +4,7 @@ provaRealSenha = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 sequenciaSenha = []
 sequenciaUsuario = []
 respostaVisual = []
-tentativas = 0
+tentativas = 10
 
 while len(sequenciaSenha) < 5:
     a = randint(0,10)
@@ -13,37 +13,47 @@ while len(sequenciaSenha) < 5:
             provaRealSenha.remove(a)
             sequenciaSenha.append(a)
 
-print(sequenciaSenha)
 print('Bem vindo ao jogo da senha secreta!')
 
-while tentativas < 6:
-    print(f'Você tem {5 - tentativas} tentativas')
-    pos = 1
-    for posicao in sequenciaSenha:
-        sequenciaUsuario.append(int(input(f'Digite o número que vai na posição numero {pos} ')))
-        pos+=1
+while tentativas > 0:
+    print(f'Voce tem {tentativas} tentativas')
+    
+    while len(sequenciaUsuario) < 5:
+        respostaUsuario = input('Digite sua sequencia de 5 digitos: ')
+
+
+        for tentativa in respostaUsuario:
+            sequenciaUsuario.append(int(tentativa))
+
+        if len(sequenciaUsuario) != 5:
+            print('Sequencia invalida, ela deve conter 5 digitos.') 
     
     print(sequenciaUsuario)
 
     for numero in sequenciaUsuario:
-        index = 0
-        if numero in sequenciaSenha and numero == sequenciaSenha[index]:
-            respostaVisual[index] = 'O'
-            print('PRIMEIROIF')
-        elif numero in sequenciaSenha and numero != sequenciaSenha[index]:
-            respostaVisual.append("-")
-            print('SEGUNDOIF')
-        elif numero not in sequenciaSenha:
-            respostaVisual.append("X")
-            print('ULTIMO IF')
-    
 
-    print("Resultado da rodada: ")
+        if numero in sequenciaSenha and sequenciaUsuario.index(numero) == sequenciaSenha.index(numero):
+            respostaVisual.append('O')
+        elif numero in sequenciaSenha and sequenciaUsuario.index(numero) != sequenciaSenha.index(numero):
+            respostaVisual.append('-')
+        elif numero not in sequenciaSenha:
+            respostaVisual.append('X')
+
+
+
+    print('Resultado da primeira rodada: ') 
     print(sequenciaUsuario)
-    print(respostaVisual[0:6])
+    print(respostaVisual)
+
+    tentativas-=1
+
+    if sequenciaSenha == sequenciaUsuario:
+        break
 
     sequenciaUsuario.clear()
     respostaVisual.clear()
 
-    tentativas+=1
-    pos = 0
+if sequenciaSenha == sequenciaUsuario:
+    print('PARABENS, TU CONSEGUIU!!!')
+elif tentativas == 0:
+    print(f'Que pena que nao conseguiu adivinhar, a senha era {sequenciaSenha}')
